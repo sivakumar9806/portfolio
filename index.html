@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Siva Kumar Vanjunathan | Product Designer & UI/UX Designer</title>
+  <meta name="description" content="Portfolio of Siva Kumar Vanjunathan: Product Designer, UI/UX Designer & WordPress Developer. Creating intuitive, accessible, high-fidelity digital products and AI-powered design systems.">
+  
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Siva Kumar Vanjunathan | Product Designer & UI/UX Designer">
+  <meta property="og:description" content="UI/UX Designer & WordPress Developer. Experienced in user research, accessibility (WCAG), Figma design systems, interactive prototyping, and AI-accelerated workflows.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?q=80&w=1200&auto=format&fit=crop">
+  <meta name="twitter:card" content="summary_large_image">
+  
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%2300F29D'/><path d='M30 50L45 65L70 35' stroke='%2305070A' stroke-width='12' stroke-linecap='round' stroke-linejoin='round' fill='none'/></svg>">
+  
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Dynamic Ambient Spotlight & Matrix Grid -->
+  <div class="ambient-spotlight" id="ambientSpotlight"></div>
+  <div class="matrix-grid-pattern"></div>
+
+  <!-- FLOATING TOP NAVIGATION -->
+  <header class="nav-wrapper">
+    <nav class="glass-nav" aria-label="Main Navigation">
+      <a href="#hero" class="brand-badge" id="navBrand">
+        <div class="brand-symbol">
+          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <div class="brand-meta">
+          <span class="brand-title">SIVA KUMAR <span style="color:var(--signal-emerald)">//</span> DESIGN</span>
+          <span class="brand-sub">UI/UX & PRODUCT DESIGNER</span>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li class="nav-item"><a href="#comparator">UX TRUTH</a></li>
+        <li class="nav-item"><a href="#pillars">DISCIPLINES</a></li>
+        <li class="nav-item"><a href="#projects">CASE STUDIES</a></li>
+        <li class="nav-item"><a href="#terminal">DESIGN OPS CLI</a></li>
+        <li class="nav-item"><a href="#experience">EXPERIENCE</a></li>
+        <li class="nav-item"><a href="#faqs">FAQS</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <div class="status-pill" title="Design Signal Live">
+          <span class="beacon-dot"></span>
+          <span>AVAILABLE FOR ROLES</span>
+        </div>
+        <button class="sound-toggle-btn" id="soundToggle" title="Toggle Tactile Audio Feedback" aria-label="Audio Feedback">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.08"/></svg>
+        </button>
+        <button class="btn-primary" id="openContactBtn">
+          GET IN TOUCH <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- TOP TELEMETRY STREAM TICKER -->
+  <div class="telemetry-tape" aria-hidden="true" style="margin-top: 20px;">
+    <div class="ticker-track" id="topTickerTrack">
+      <!-- Injected via app.js -->
+    </div>
+  </div>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero-section" id="hero">
+      <div class="container">
+        
+        <div class="hero-badge-row">
+          <div class="hero-pill-intro">
+            /Introducing/
+          </div>
+          <div class="section-tag cyan">
+            <span>HUMAN-CENTERED & AI-ACCELERATED DESIGN</span>
+          </div>
+        </div>
+
+        <div class="hero-title-group">
+          <h1 class="hero-title-main">
+            DESIGNING <span class="editorial-word">Intuitive</span><br>
+            DIGITAL PRODUCTS.
+          </h1>
+        </div>
+
+        <p class="hero-desc">
+          I bridge <strong>user research, accessibility (WCAG), and high-fidelity Figma design systems</strong> with 
+          <strong>AI-powered workflows</strong> to design seamless web and mobile experiences that drive real business conversion and user delight.
+        </p>
+
+        <div class="hero-cta-group">
+          <button class="btn-primary" id="heroExploreBtn">
+            EXPLORE CASE STUDIES ↓
+          </button>
+          <button class="btn-secondary" id="heroCopyEmailBtn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            COPY EMAIL (vsivakumar6198@gmail.com)
+          </button>
+          <a href="https://behance.net/sivakumarv1" target="_blank" rel="noreferrer" class="btn-secondary">
+            BEHANCE PORTFOLIO ↗
+          </a>
+        </div>
+
+        <!-- Hero Stats Grid -->
+        <div class="hero-stats-grid" id="heroStatsContainer">
+          <!-- Injected via app.js -->
+        </div>
+
+        <!-- Interactive Hero Signal Inspector Widget -->
+        <div class="signal-inspector-frame">
+          <div class="inspector-header">
+            <div class="inspector-controls">
+              <span class="mac-dot red"></span>
+              <span class="mac-dot yellow"></span>
+              <span class="mac-dot green"></span>
+              <span style="font-family:var(--font-mono); font-size:11px; color:var(--text-dim); margin-left:8px;">DESIGN_SYSTEM_PROFILER_v2.0</span>
+            </div>
+
+            <div class="inspector-tabs" id="roleTabGroup">
+              <!-- Rendered via JS -->
+            </div>
+
+            <div class="inspector-meta-badge">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <span id="roleLatencyTag">WCAG 2.1 AAA</span>
+            </div>
+          </div>
+
+          <div class="inspector-body" id="roleInspectorContent">
+            <!-- Dynamically populated via app.js -->
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- THE COMPARATOR SECTION: "A GAP IN RESEARCH IS A GAP IN THE TRUTH" -->
+    <section class="comparator-section" id="comparator">
+      <div class="container">
+        
+        <div class="section-tag">
+          <span>USER EXPERIENCE DIAGNOSTICS</span>
+        </div>
+
+        <h2 class="heading-display">
+          A GAP IN USER INSIGHT IS A<br>
+          <span class="italic-serif">Gap in Product Value.</span>
+        </h2>
+
+        <p class="subheading-lead">
+          When digital products rely on assumptions, usability breaks and conversion drops. 
+          Human-centered design closes the gap with rigorous research, accessible patterns, and validated prototypes.
+        </p>
+
+        <div class="comparator-box">
+          <div class="comparator-toolbar">
+            <div style="font-family:var(--font-mono); font-size:11px; color:var(--text-secondary);">
+              UX & USABILITY BENCHMARK
+            </div>
+            <div class="comparator-toggle-group">
+              <button class="comp-toggle-btn active" id="viewSplitBtn">SPLIT COMPARISON</button>
+              <button class="comp-toggle-btn" id="viewPrecisionOnlyBtn">SIVA'S DESIGN ONLY</button>
+            </div>
+          </div>
+
+          <div class="comparator-grid" id="comparatorGrid">
+            <!-- Left: Generic/Fragmented UX -->
+            <div class="comparator-side legacy" id="compSideLegacy">
+              <div>
+                <div class="comp-side-header">
+                  <span class="comp-side-title">WHAT GENERIC UI/UX SEES</span>
+                  <span class="comp-badge legacy-badge">Inaccessible & Guesswork</span>
+                </div>
+                <div class="comp-items-list" id="legacyItemsList">
+                  <!-- Injected via JS -->
+                </div>
+              </div>
+              <div class="comp-side-footer">
+                <span class="comp-footer-metric" style="color:var(--alert-coral);">USER DROP-OFF: HIGH</span>
+                <span class="comp-footer-metric" style="color:var(--text-dim);">STATUS: FRICTION HEAVY</span>
+              </div>
+            </div>
+
+            <!-- Right: Siva's Validated UX -->
+            <div class="comparator-side precision" id="compSidePrecision">
+              <div>
+                <div class="comp-side-header">
+                  <span class="comp-side-title" style="color:var(--signal-emerald);">WHAT SIVA'S DESIGN DELIVERS</span>
+                  <span class="comp-badge precision-badge">100% Validated & Accessible</span>
+                </div>
+                <div class="comp-items-list" id="precisionItemsList">
+                  <!-- Injected via JS -->
+                </div>
+              </div>
+              <div class="comp-side-footer">
+                <span class="comp-footer-metric" style="color:var(--signal-emerald);">USABILITY SCORE: OPTIMAL</span>
+                <span class="comp-footer-metric" style="color:var(--signal-emerald);">STATUS: READY FOR PRODUCTION</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- BENTO PILLARS (01, 02, 03) -->
+    <section class="bento-section" id="pillars">
+      <div class="container">
+        
+        <div class="section-tag cyan">
+          <span>CORE DESIGN PILLARS</span>
+        </div>
+
+        <h2 class="heading-display">
+          PRECISION ACROSS THE<br>
+          <span class="italic-serif">Product Design Lifecycle.</span>
+        </h2>
+
+        <p class="subheading-lead">
+          Three core competencies combining user research, tactile motion prototyping, and AI-accelerated workflows.
+        </p>
+
+        <div class="bento-pillars-grid" id="bentoPillarsContainer">
+          <!-- Injected via app.js from PORTFOLIO_DATA.bentoPillars -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FEATURED PROJECTS SHOWCASE (Case Studies) -->
+    <section class="projects-section" id="projects">
+      <div class="container">
+        
+        <div class="section-tag">
+          <span>PORTFOLIO CASE STUDIES</span>
+        </div>
+
+        <h2 class="heading-display">
+          DESIGNED FOR IMPACT.<br>
+          <span class="italic-serif">Validated by Users.</span>
+        </h2>
+
+        <p class="subheading-lead">
+          Explore key projects spanning mobile banking revamps, e-commerce brand prototypes, and design systems.
+        </p>
+
+        <div class="projects-grid" id="projectsGrid">
+          <!-- Injected via app.js -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- INTERACTIVE CLI TERMINAL (DESIGN OPS) -->
+    <section class="terminal-section" id="terminal">
+      <div class="container">
+        
+        <div class="section-tag cyan">
+          <span>DESIGN OPS & SKILLS SHELL</span>
+        </div>
+
+        <h2 class="heading-display">
+          INTERACTIVE DESIGN<br>
+          <span class="italic-serif">CLI Console.</span>
+        </h2>
+
+        <p class="subheading-lead">
+          Query my skill matrix, inspect AI design workflows, and view UX methodologies in real-time.
+        </p>
+
+        <div class="terminal-card">
+          <div class="terminal-header">
+            <div class="inspector-controls">
+              <span class="mac-dot red"></span>
+              <span class="mac-dot yellow"></span>
+              <span class="mac-dot green"></span>
+            </div>
+            <span class="terminal-title">siva-design-shell — zsh — 80x24</span>
+            <span style="font-family:var(--font-mono); font-size:10px; color:var(--signal-emerald);">● CONNECTED</span>
+          </div>
+
+          <div class="terminal-body" id="termOutput">
+            <div class="term-line prompt">Siva Kumar Vanjunathan Design Terminal [Version 2.0]</div>
+            <div class="term-line output">Type <span class="term-line highlight">help</span> to view commands or click the quick action tags below.</div>
+          </div>
+
+          <div class="terminal-quick-cmds">
+            <button class="quick-cmd-btn" data-cmd="help">help</button>
+            <button class="quick-cmd-btn" data-cmd="skills">skills</button>
+            <button class="quick-cmd-btn" data-cmd="tools">tools</button>
+            <button class="quick-cmd-btn" data-cmd="projects">projects</button>
+            <button class="quick-cmd-btn" data-cmd="ai-tools">ai-tools</button>
+            <button class="quick-cmd-btn" data-cmd="education">education</button>
+            <button class="quick-cmd-btn" data-cmd="contact">contact</button>
+            <button class="quick-cmd-btn" data-cmd="clear">clear</button>
+          </div>
+
+          <div class="terminal-body" style="padding-top:0; min-height:auto;">
+            <div class="term-input-row">
+              <span style="color:var(--signal-emerald); font-family:var(--font-mono);">siva@design-ops:~$</span>
+              <input type="text" class="term-input" id="terminalInput" placeholder="Type a command (e.g. 'skills', 'projects', 'ai-tools')..." autocomplete="off">
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- EXPERIENCE & EDUCATION TIMELINE -->
+    <section class="experience-section" id="experience">
+      <div class="container">
+        
+        <div class="section-tag">
+          <span>PROFESSIONAL BACKGROUND</span>
+        </div>
+
+        <h2 class="heading-display">
+          EXPERIENCE &<br>
+          <span class="italic-serif">Academic Foundation.</span>
+        </h2>
+
+        <p class="subheading-lead" style="margin-bottom: 32px;">
+          Combining engineering rigor with MBA strategic business acumen and hands-on product design execution.
+        </p>
+
+        <div class="experience-timeline" id="experienceContainer">
+          <!-- Injected via app.js -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FAQ ACCORDION -->
+    <section class="faq-section" id="faqs">
+      <div class="container">
+        
+        <div class="section-tag cyan">
+          <span>FREQUENTLY ASKED QUESTIONS</span>
+        </div>
+
+        <h2 class="heading-display">
+          DESIGN PROCESS &<br>
+          <span class="italic-serif">Collaboration Insights.</span>
+        </h2>
+
+        <div class="faq-grid" id="faqAccordionContainer">
+          <!-- Injected via JS -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- REVERSE TELEMETRY STREAM TICKER -->
+    <div class="telemetry-tape reverse" aria-hidden="true" style="margin-top: 60px;">
+      <div class="ticker-track" id="bottomTickerTrack">
+        <!-- Injected via JS -->
+      </div>
+    </div>
+
+    <!-- CALL TO ACTION & CONTACT -->
+    <section class="cta-section" id="contact">
+      <div class="container">
+        <div class="cta-box">
+          <div class="hero-pill-intro" style="margin-bottom: 20px;">
+            /Let's Connect/
+          </div>
+          <h2 class="cta-heading">
+            LET'S DESIGN<br>
+            <span class="cta-italic">Something Extraordinary.</span>
+          </h2>
+          <p class="cta-subhead">
+            Open for full-time Product Designer & UI/UX roles, freelance consulting, and high-impact digital ventures.
+          </p>
+          <div class="cta-actions-row">
+            <button class="btn-primary" id="ctaContactBtn" style="padding:14px 32px; font-size:14px;">
+              SEND MESSAGE →
+            </button>
+            <button class="email-pill-btn" id="ctaCopyEmailBtn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <span>vsivakumar6198@gmail.com</span>
+            </button>
+            <a href="tel:+918248602760" class="email-pill-btn" style="text-decoration:none;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <span>+91 8248602760</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- SITE FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          SIVA KUMAR VANJUNATHAN // UI/UX DESIGNER
+        </div>
+        <div class="footer-copyright">
+          © 2026 Siva Kumar Vanjunathan. All Rights Reserved. Crafted with SignalIQ Design System.
+        </div>
+        <div class="footer-socials">
+          <a href="https://linkedin.com/in/siva-kumar-vanjunathan" target="_blank" rel="noreferrer" class="social-link">LINKEDIN ↗</a>
+          <a href="https://behance.net/sivakumarv1" target="_blank" rel="noreferrer" class="social-link">BEHANCE ↗</a>
+          <a href="mailto:vsivakumar6198@gmail.com" class="social-link">EMAIL ↗</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- PROJECT DETAIL MODAL -->
+  <div class="modal-overlay" id="projectModalOverlay">
+    <div class="modal-card" id="projectModalCard">
+      <button class="modal-close-btn" id="closeProjectModalBtn">✕</button>
+      <div id="projectModalContent">
+        <!-- Dynamically filled -->
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT MODAL -->
+  <div class="modal-overlay" id="contactModalOverlay">
+    <div class="modal-card" style="max-width:540px;">
+      <button class="modal-close-btn" id="closeContactModalBtn">✕</button>
+      <div style="margin-bottom: 24px;">
+        <span class="section-tag" style="margin-bottom:8px;">DIRECT TRANSMISSION</span>
+        <h3 style="font-family:var(--font-display); font-size:24px; font-weight:700;">Initiate Collaboration</h3>
+        <p style="font-size:14px; color:var(--text-secondary); margin-top:4px;">Transmit your project details directly to Siva Kumar.</p>
+      </div>
+
+      <form id="contactForm" style="display:flex; flex-direction:column; gap:16px;">
+        <div>
+          <label style="display:block; font-family:var(--font-mono); font-size:11px; color:var(--text-dim); margin-bottom:6px;">YOUR NAME / COMPANY</label>
+          <input type="text" id="contactName" required placeholder="e.g. Design Lead / Talent Partner" style="width:100%; background:#06080C; border:1px solid var(--border-medium); border-radius:var(--radius-sm); padding:12px; font-family:var(--font-body); color:white; outline:none;">
+        </div>
+        <div>
+          <label style="display:block; font-family:var(--font-mono); font-size:11px; color:var(--text-dim); margin-bottom:6px;">EMAIL ADDRESS</label>
+          <input type="email" id="contactEmail" required placeholder="name@company.com" style="width:100%; background:#06080C; border:1px solid var(--border-medium); border-radius:var(--radius-sm); padding:12px; font-family:var(--font-body); color:white; outline:none;">
+        </div>
+        <div>
+          <label style="display:block; font-family:var(--font-mono); font-size:11px; color:var(--text-dim); margin-bottom:6px;">PROJECT SCOPE / MESSAGE</label>
+          <textarea id="contactMessage" rows="4" required placeholder="Tell me about the role, project goals, and timeline..." style="width:100%; background:#06080C; border:1px solid var(--border-medium); border-radius:var(--radius-sm); padding:12px; font-family:var(--font-body); color:white; outline:none; resize:none;"></textarea>
+        </div>
+        <button type="submit" class="btn-primary" style="padding:14px; width:100%; font-size:13px;">
+          SEND MESSAGE →
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- TOAST CONTAINER -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- SCRIPTS -->
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+{
+  "name": "signal-portfolio",
+  "version": "1.0.0",
+  "description": "Awwwards-Grade Portfolio inspired by Pine Labs SignalIQ design & interactions",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "portfolio",
+    "signaliq",
+    "fintech",
+    "design-system",
+    "awwwards",
+    "distributed-systems"
+  ],
+  "author": "Alex Chen",
+  "license": "MIT",
+  "dependencies": {
+    "isomorphic-git": "^1.41.7"
+  }
+}
