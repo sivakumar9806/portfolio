@@ -194,6 +194,7 @@ const DesignOpsWorkflow = [
       subtitle: "Accessibility-First Redesign for Millions of Mobile Banking Users",
       category: "Fintech & Mobile UI/UX",
       featured: true,
+      image: "assets/bank-of-india-preview.jpg",
       metrics: {
         accessibility: "WCAG 2.1 AAA",
         taskSuccess: "+42%",
@@ -218,6 +219,7 @@ const DesignOpsWorkflow = [
       subtitle: "End-to-End Responsive Prototype with Micro-Interactions",
       category: "Brand, E-Commerce & Motion Design",
       featured: true,
+      image: "assets/lays-ecommerce-preview.jpg",
       metrics: {
         prototypeFidelity: "100% Figma",
         interactionFPS: "60 FPS Smooth",
@@ -238,10 +240,11 @@ const DesignOpsWorkflow = [
     {
       id: "proj-3",
       slug: "landing-pages-showcase",
-      title: "Conversion-Focused Landing Pages Collection",
+      title: "Conversion-Focused Landing Pages & Design System",
       subtitle: "Component-Driven Typographic Design System & UI Showcase",
       category: "Web UI & Design Systems",
       featured: true,
+      image: "assets/design-system-preview.jpg",
       metrics: {
         componentReuse: "90%",
         responsiveStyles: "Mobile-First",

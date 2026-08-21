@@ -5,6 +5,7 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+  initThemeSwitcher();
   initAudioSynthesizer();
   initMouseSpotlight();
   initTelemetryTickers();
@@ -18,7 +19,37 @@ document.addEventListener('DOMContentLoaded', () => {
   initFaqAccordion();
   initModalsAndForms();
   initScrollSpy();
+  init3DTiltEffects();
 });
+
+/* ==========================================================================
+   0. DYNAMIC THEME ACCENT SWITCHER (Emerald / Cyan / Violet / Amber)
+   ========================================================================== */
+function initThemeSwitcher() {
+  const savedTheme = localStorage.getItem('siva_theme_accent') || 'emerald';
+  applyTheme(savedTheme);
+
+  document.querySelectorAll('.theme-dot').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const theme = btn.getAttribute('data-theme');
+      applyTheme(theme);
+      localStorage.setItem('siva_theme_accent', theme);
+      window.playSignalSound?.(1100, 0.06, 'triangle');
+      showToast(`Signal Accent Switched: ${theme.toUpperCase()}`);
+    });
+  });
+
+  function applyTheme(theme) {
+    if (theme === 'emerald') {
+      document.documentElement.removeAttribute('data-theme');
+    } else {
+      document.documentElement.setAttribute('data-theme', theme);
+    }
+    document.querySelectorAll('.theme-dot').forEach(d => {
+      d.classList.toggle('active', d.getAttribute('data-theme') === theme);
+    });
+  }
+}
 
 /* ==========================================================================
    1. AUDIO SYNTHESIZER (Tactile Haptic Clicks using Web Audio API)
@@ -336,6 +367,16 @@ function initProjectsSection() {
 
   grid.innerHTML = PORTFOLIO_DATA.projects.map(proj => `
     <div class="project-card" data-proj-id="${proj.id}">
+      ${proj.image ? `
+        <div class="project-img-wrapper view-proj-trigger" data-proj-id="${proj.id}" title="Click to inspect full case study & Figma mockup">
+          <img src="${proj.image}" alt="${proj.title}" class="project-mockup-img" loading="lazy">
+          <div class="project-img-overlay"></div>
+          <div class="project-badge-float">
+            <span class="beacon-dot"></span>
+            <span>FIGMA PROTOTYPE</span>
+          </div>
+        </div>
+      ` : ''}
       <div>
         <div class="project-category">${proj.category}</div>
         <h3 class="project-title">${proj.title}</h3>
@@ -358,9 +399,9 @@ function initProjectsSection() {
 
       <div class="project-card-footer">
         <button class="proj-detail-btn view-proj-trigger" data-proj-id="${proj.id}">
-          VIEW CASE STUDY →
+          EXPLORE CASE STUDY →
         </button>
-        <span style="font-family:var(--font-mono); font-size:11px; color:var(--signal-emerald);">FIGMA PROTOTYPE</span>
+        <span style="font-family:var(--font-mono); font-size:11px; color:var(--signal-emerald);">INTERACTIVE PREVIEW</span>
       </div>
     </div>
   `).join('');
@@ -384,6 +425,12 @@ function openProjectModal(projId) {
   window.playSignalSound?.(1050, 0.05);
 
   content.innerHTML = `
+    ${proj.image ? `
+      <div style="width:100%; aspect-ratio:16/9; border-radius:12px; overflow:hidden; margin-bottom:20px; border:1px solid var(--signal-emerald-border); box-shadow:0 16px 40px rgba(0,0,0,0.7);">
+        <img src="${proj.image}" alt="${proj.title}" style="width:100%; height:100%; object-fit:cover; display:block;">
+      </div>
+    ` : ''}
+
     <div style="margin-bottom: 20px;">
       <span class="section-tag" style="margin-bottom:8px;">${proj.category}</span>
       <h2 style="font-family:var(--font-display); font-size:26px; font-weight:800; color:white; line-height:1.2;">${proj.title}</h2>
@@ -858,4 +905,30 @@ function escapeHtml(str) {
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&#039;");
+}
+
+/* ==========================================================================
+   14. INTERACTIVE 3D TILT EFFECT & MAGNETIC CARD PHYSICS
+   ========================================================================== */
+function init3DTiltEffects() {
+  const cards = document.querySelectorAll('.project-card, .bento-pillar-card, .stat-card');
+  
+  cards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      
+      const rotateX = ((y - centerY) / centerY) * -4;
+      const rotateY = ((x - centerX) / centerX) * 4;
+      
+      card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-4px)`;
+    });
+    
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+    });
+  });
 }
