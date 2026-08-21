@@ -412,6 +412,179 @@ body {
   border-color: var(--border-medium);
 }
 
+/* Navigation Resume Button */
+.nav-resume-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: rgba(0, 242, 157, 0.08);
+  border: 1px solid var(--signal-emerald-border);
+  border-radius: var(--radius-pill);
+  color: var(--signal-emerald);
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  transition: all 0.25s var(--ease-spring);
+  box-shadow: 0 0 12px rgba(0, 242, 157, 0.12);
+}
+
+.nav-resume-btn:hover {
+  background: var(--signal-emerald);
+  color: var(--bg-void);
+  border-color: var(--signal-emerald);
+  transform: translateY(-1px);
+  box-shadow: 0 0 20px var(--signal-emerald-glow);
+}
+
+.nav-resume-btn svg {
+  transition: transform 0.2s ease;
+}
+
+.nav-resume-btn:hover svg {
+  transform: translateY(2px);
+}
+
+/* Hero Download Resume Button with Glow & PDF Badge */
+.resume-hero-glow {
+  background: linear-gradient(135deg, #00F29D 0%, #00C27D 100%) !important;
+  color: var(--bg-void) !important;
+  border: none;
+  font-weight: 700 !important;
+  box-shadow: 0 6px 24px rgba(0, 242, 157, 0.35) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.resume-hero-glow:hover {
+  background: linear-gradient(135deg, #2bf7af 0%, #00F29D 100%) !important;
+  box-shadow: 0 8px 32px rgba(0, 242, 157, 0.55) !important;
+  transform: translateY(-2px);
+}
+
+.resume-hero-glow svg {
+  transition: transform 0.25s ease;
+}
+
+.resume-hero-glow:hover svg {
+  transform: translateY(2px);
+}
+
+.resume-badge-tag {
+  background: rgba(5, 7, 10, 0.35);
+  color: var(--bg-void);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-left: 4px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+/* Terminal Quick Resume Button */
+.resume-quick-cmd {
+  color: var(--signal-emerald) !important;
+  border-color: var(--signal-emerald-border) !important;
+  background: rgba(0, 242, 157, 0.06) !important;
+}
+
+.resume-quick-cmd:hover {
+  background: var(--signal-emerald) !important;
+  color: var(--bg-void) !important;
+}
+
+/* Experience Section Resume Banner */
+.experience-resume-banner {
+  margin-top: 32px;
+  background: linear-gradient(135deg, rgba(0, 242, 157, 0.06) 0%, rgba(0, 210, 255, 0.04) 100%);
+  border: 1px solid var(--signal-emerald-border);
+  border-radius: var(--radius-md);
+  padding: 24px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.exp-resume-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.exp-resume-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(0, 242, 157, 0.12);
+  border: 1px solid var(--signal-emerald-border);
+  display: grid;
+  place-items: center;
+  color: var(--signal-emerald);
+  flex-shrink: 0;
+}
+
+.exp-resume-title {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 2px;
+}
+
+.exp-resume-sub {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.exp-resume-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: var(--signal-emerald);
+  color: var(--bg-void);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  transition: all 0.25s var(--ease-spring);
+  box-shadow: 0 4px 16px rgba(0, 242, 157, 0.25);
+  white-space: nowrap;
+}
+
+.exp-resume-btn:hover {
+  background: white;
+  color: var(--bg-void);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(255, 255, 255, 0.3);
+}
+
+/* Contact CTA & Footer Resume Buttons */
+.resume-pill-btn {
+  background: rgba(0, 242, 157, 0.08) !important;
+  border-color: var(--signal-emerald-border) !important;
+  color: var(--signal-emerald) !important;
+  text-decoration: none;
+}
+
+.resume-pill-btn:hover {
+  background: var(--signal-emerald) !important;
+  color: var(--bg-void) !important;
+  border-color: var(--signal-emerald) !important;
+  box-shadow: 0 6px 20px var(--signal-emerald-glow);
+}
+
+.resume-footer-link:hover {
+  text-shadow: 0 0 10px var(--signal-emerald);
+}
+
 /* Mobile Nav Toggle */
 .mobile-menu-btn {
   display: none;

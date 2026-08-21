@@ -14,6 +14,7 @@ const PORTFOLIO_DATA = {
     linkedin: "https://linkedin.com/in/siva-kumar-vanjunathan",
     behance: "https://behance.net/sivakumarv1",
     portfolioUrl: "https://behance.net/sivakumarv1",
+    resumeUrl: "Siva_Kumar_Resume.pdf",
     bioShort: "Designing intuitive, user-centered digital products for web & mobile. Bridging user research, high-fidelity design systems, and AI-accelerated workflows to craft conversion-focused, accessible digital experiences.",
     stats: [
       { label: "USER INTERFACES SHIPPED", value: "24+", change: "Web & Mobile" },

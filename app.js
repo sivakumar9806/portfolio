@@ -453,6 +453,7 @@ function initTerminal() {
       case 'help':
         res = `
 Available diagnostic commands:
+  <span class="term-line highlight">resume</span>      - Download Siva Kumar's full Resume (PDF)
   <span class="term-line highlight">skills</span>      - Enumerate UX, UI, and Research proficiencies
   <span class="term-line highlight">tools</span>       - List design software (Figma, Adobe XD, Photoshop, Miro, WordPress)
   <span class="term-line highlight">ai-tools</span>    - List AI-accelerated design platforms (v0, Lovable, Figma AI, Galileo)
@@ -460,6 +461,19 @@ Available diagnostic commands:
   <span class="term-line highlight">education</span>   - MBA (Pondicherry Univ) & B.E. (Civil Engineering)
   <span class="term-line highlight">contact</span>     - Display email, phone, LinkedIn, and Behance
   <span class="term-line highlight">clear</span>       - Flush terminal output buffer`;
+        break;
+
+      case 'resume':
+      case 'cv':
+      case 'download':
+        triggerResumeDownload();
+        res = `
+=== RESUME TRANSMISSION INITIATED ===
+File      : Siva_Kumar_Resume.pdf
+Role      : Product Designer & UI/UX Designer
+Experience: 5+ Years (UX Research, WCAG, Figma Design Systems, WordPress)
+Status    : <span class="term-line highlight">● DOWNLOAD STARTED AUTOMATICALLY</span>
+Direct    : <a href="Siva_Kumar_Resume.pdf" download="Siva_Kumar_Resume.pdf" style="color:var(--signal-emerald); text-decoration:underline;">Click here if file did not start</a>`;
         break;
 
       case 'skills':
@@ -588,11 +602,30 @@ function initExperienceSection() {
     </div>
   `).join('');
 
+  const resumeBannerHtml = `
+    <div class="experience-resume-banner">
+      <div class="exp-resume-left">
+        <div class="exp-resume-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        </div>
+        <div>
+          <div class="exp-resume-title">Full Curriculum Vitae & Design Case Studies</div>
+          <div class="exp-resume-sub">Download complete resume PDF with detailed project metrics, design leadership, and contact data.</div>
+        </div>
+      </div>
+      <a href="Siva_Kumar_Resume.pdf" download="Siva_Kumar_Resume.pdf" class="exp-resume-btn" id="timelineResumeBtn" title="Download Siva Kumar's Resume">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        <span>DOWNLOAD CV (PDF)</span>
+      </a>
+    </div>
+  `;
+
   container.innerHTML = `
     <div style="font-family:var(--font-mono); font-size:12px; color:var(--signal-emerald); margin-bottom:12px;">// WORK EXPERIENCE</div>
     ${expHtml}
     <div style="font-family:var(--font-mono); font-size:12px; color:var(--laser-cyan); margin: 24px 0 12px;">// ACADEMIC CREDENTIALS</div>
     ${eduHtml}
+    ${resumeBannerHtml}
   `;
 }
 
@@ -699,6 +732,28 @@ function initModalsAndForms() {
       copyToClipboard(PORTFOLIO_DATA.profile.email);
     });
   }
+
+  // Resume Download Buttons Tactile Sound & Toast Feedback
+  document.querySelectorAll('a[download]').forEach(link => {
+    link.addEventListener('click', () => {
+      window.playSignalSound?.(1200, 0.05, 'triangle');
+      showToast("Downloading Siva Kumar's Resume (PDF)...");
+    });
+  });
+}
+
+/* ==========================================================================
+   13. RESUME DOWNLOAD AUTOMATION ENGINE
+   ========================================================================== */
+function triggerResumeDownload() {
+  window.playSignalSound?.(1200, 0.06, 'triangle');
+  showToast("Downloading Siva Kumar's Resume (PDF)...");
+  const link = document.createElement('a');
+  link.href = PORTFOLIO_DATA.profile.resumeUrl || 'Siva_Kumar_Resume.pdf';
+  link.download = 'Siva_Kumar_Resume.pdf';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
 }
 
 /* ==========================================================================
