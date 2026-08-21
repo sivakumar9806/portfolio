@@ -258,15 +258,15 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 28px;
+  gap: 14px;
   width: 100%;
-  max-width: 1080px;
+  max-width: 1240px;
   background: var(--bg-glass);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid var(--border-medium);
   border-radius: var(--radius-pill);
-  padding: 10px 14px 10px 22px;
+  padding: 7px 10px 7px 18px;
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.04) inset;
   transition: all 0.3s var(--ease-smooth);
 }
@@ -278,9 +278,10 @@ body {
 .brand-badge {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   text-decoration: none;
   color: var(--text-primary);
+  flex-shrink: 0;
 }
 
 .brand-symbol {
@@ -291,11 +292,12 @@ body {
   display: grid;
   place-items: center;
   box-shadow: 0 0 16px var(--signal-emerald-glow);
+  flex-shrink: 0;
 }
 
 .brand-symbol svg {
-  width: 16px;
-  height: 16px;
+  width: 15px;
+  height: 15px;
   fill: var(--bg-void);
 }
 
@@ -307,35 +309,40 @@ body {
 .brand-title {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 14px;
-  letter-spacing: 0.08em;
+  font-size: 13px;
+  letter-spacing: 0.06em;
   display: flex;
   align-items: center;
   gap: 6px;
+  white-space: nowrap;
 }
 
 .brand-sub {
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 9.5px;
   color: var(--text-dim);
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
 }
 
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 22px;
+  gap: 14px;
   list-style: none;
+  flex-shrink: 1;
 }
 
 .nav-item a {
   text-decoration: none;
-  font-size: 13px;
+  font-size: 11.5px;
   font-weight: 500;
   color: var(--text-secondary);
   transition: color 0.2s ease, transform 0.2s ease;
   position: relative;
-  padding: 4px 0;
+  padding: 4px 2px;
+  white-space: nowrap;
+  letter-spacing: 0.03em;
 }
 
 .nav-item a:hover,
@@ -358,23 +365,26 @@ body {
 .nav-actions {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
+  flex-shrink: 0;
+  flex-wrap: nowrap;
 }
 
 /* Theme Switcher Pill */
 .theme-switcher-pill {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 5px 8px;
+  gap: 5px;
+  padding: 4px 7px;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--border-medium);
   border-radius: var(--radius-pill);
+  flex-shrink: 0;
 }
 
 .theme-dot {
-  width: 14px;
-  height: 14px;
+  width: 13px;
+  height: 13px;
   border-radius: 50%;
   border: 2px solid transparent;
   cursor: pointer;
@@ -389,7 +399,7 @@ body {
 
 .theme-dot.active {
   border-color: #FFFFFF;
-  box-shadow: 0 0 10px currentColor;
+  box-shadow: 0 0 8px currentColor;
   transform: scale(1.15);
 }
 
@@ -401,20 +411,22 @@ body {
 .status-pill {
   display: inline-flex;
   align-items: center;
-  gap: 7px;
-  padding: 6px 12px;
+  gap: 6px;
+  padding: 5px 9px;
   background: rgba(0, 242, 157, 0.06);
   border: 1px solid var(--signal-emerald-border);
   border-radius: var(--radius-pill);
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 10px;
   color: var(--signal-emerald);
   font-weight: 500;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .beacon-dot {
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
   background-color: var(--signal-emerald);
   border-radius: 50%;
   box-shadow: 0 0 8px var(--signal-emerald);
@@ -431,14 +443,14 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 6px;
   background: var(--text-primary);
   color: var(--bg-void);
   font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 12px;
-  letter-spacing: 0.06em;
-  padding: 10px 18px;
+  font-weight: 700;
+  font-size: 11.5px;
+  letter-spacing: 0.05em;
+  padding: 8px 15px;
   border-radius: var(--radius-pill);
   text-decoration: none;
   cursor: pointer;
@@ -446,6 +458,8 @@ body {
   outline: none;
   transition: all 0.25s var(--ease-spring);
   box-shadow: 0 4px 14px rgba(255, 255, 255, 0.15);
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .btn-primary:hover {
@@ -464,8 +478,8 @@ body {
 }
 
 .sound-toggle-btn {
-  width: 36px;
-  height: 36px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid var(--border-subtle);
@@ -474,6 +488,7 @@ body {
   place-items: center;
   cursor: pointer;
   transition: all 0.2s ease;
+  flex-shrink: 0;
 }
 
 .sound-toggle-btn:hover {
@@ -486,18 +501,21 @@ body {
 .nav-resume-btn {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 8px 14px;
+  gap: 5px;
+  padding: 6px 11px;
   background: rgba(0, 242, 157, 0.08);
   border: 1px solid var(--signal-emerald-border);
   border-radius: var(--radius-pill);
   color: var(--signal-emerald);
   font-family: var(--font-display);
-  font-size: 11px;
+  font-size: 10.5px;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-decoration: none;
   transition: all 0.25s var(--ease-spring);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
   box-shadow: 0 0 12px rgba(0, 242, 157, 0.12);
 }
 
@@ -2137,6 +2155,23 @@ section {
    RESPONSIVE DESIGN (Comprehensive Multi-Device Breakpoints)
    ========================================================================== */
 
+/* Laptops & Narrow Desktop Screens (<= 1240px) */
+@media (max-width: 1240px) {
+  .status-pill {
+    display: none;
+  }
+  .nav-links {
+    gap: 12px;
+  }
+  .nav-item a {
+    font-size: 11px;
+  }
+  .glass-nav {
+    padding: 6px 10px 6px 16px;
+    gap: 10px;
+  }
+}
+
 /* Tablets & Medium Screens (<= 1024px) */
 @media (max-width: 1024px) {
   .inspector-body {
@@ -2154,10 +2189,13 @@ section {
     padding: 30px;
   }
   .nav-links {
-    gap: 14px;
+    gap: 10px;
   }
   .nav-item a {
-    font-size: 11px;
+    font-size: 10.5px;
+  }
+  .brand-sub {
+    display: none;
   }
 }
 
