@@ -715,13 +715,50 @@ function initModalsAndForms() {
   }
 
   if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
+    contactForm.addEventListener('submit', async (e) => {
       e.preventDefault();
-      window.playSignalSound?.(1300, 0.08, 'triangle');
-      const name = document.getElementById('contactName').value;
-      showToast(`Signal transmitted successfully. Thank you, ${name}!`);
-      contactOverlay?.classList.remove('open');
-      contactForm.reset();
+      const submitBtn = document.getElementById('contactSubmitBtn') || contactForm.querySelector('button[type="submit"]');
+      const originalText = submitBtn ? submitBtn.innerHTML : 'SEND MESSAGE →';
+      
+      const nameInput = document.getElementById('contactName');
+      const emailInput = document.getElementById('contactEmail');
+      const messageInput = document.getElementById('contactMessage');
+      const senderName = nameInput ? nameInput.value.trim() : 'there';
+      
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = `<span>TRANSMITTING SIGNAL...</span>`;
+      }
+      
+      try {
+        const formData = new FormData(contactForm);
+        const encodedBody = new URLSearchParams(formData).toString();
+        
+        await fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: encodedBody
+        });
+        
+        window.playSignalSound?.(1300, 0.08, 'triangle');
+        showToast(`Transmission received! Thank you, ${senderName}.`);
+        contactOverlay?.classList.remove('open');
+        contactForm.reset();
+      } catch (err) {
+        console.error('Form transmission error:', err);
+        // Fallback: Open mailto directly if network fails
+        window.playSignalSound?.(900, 0.08, 'sawtooth');
+        showToast(`Signal sent. Opening direct email fallback...`);
+        const emailBody = encodeURIComponent(`Name: ${senderName}\nEmail: ${emailInput?.value}\n\n${messageInput?.value}`);
+        window.location.href = `mailto:vsivakumar6198@gmail.com?subject=Project Inquiry from ${encodeURIComponent(senderName)}&body=${emailBody}`;
+        contactOverlay?.classList.remove('open');
+        contactForm.reset();
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalText;
+        }
+      }
     });
   }
 

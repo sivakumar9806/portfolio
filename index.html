@@ -449,20 +449,24 @@
         <p style="font-size:14px; color:var(--text-secondary); margin-top:4px;">Transmit your project details directly to Siva Kumar.</p>
       </div>
 
-      <form id="contactForm" style="display:flex; flex-direction:column; gap:16px;">
+      <form id="contactForm" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" style="display:flex; flex-direction:column; gap:16px;">
+        <input type="hidden" name="form-name" value="contact">
+        <p style="display:none;">
+          <label>Don’t fill this out if you're human: <input name="bot-field"></label>
+        </p>
         <div>
           <label style="display:block; font-family:var(--font-mono); font-size:11px; color:var(--text-dim); margin-bottom:6px;">YOUR NAME / COMPANY</label>
-          <input type="text" id="contactName" required placeholder="e.g. Design Lead / Talent Partner" style="width:100%; background:#06080C; border:1px solid var(--border-medium); border-radius:var(--radius-sm); padding:12px; font-family:var(--font-body); color:white; outline:none;">
+          <input type="text" id="contactName" name="name" required placeholder="e.g. Design Lead / Talent Partner" style="width:100%; background:#06080C; border:1px solid var(--border-medium); border-radius:var(--radius-sm); padding:12px; font-family:var(--font-body); color:white; outline:none;">
         </div>
         <div>
           <label style="display:block; font-family:var(--font-mono); font-size:11px; color:var(--text-dim); margin-bottom:6px;">EMAIL ADDRESS</label>
-          <input type="email" id="contactEmail" required placeholder="name@company.com" style="width:100%; background:#06080C; border:1px solid var(--border-medium); border-radius:var(--radius-sm); padding:12px; font-family:var(--font-body); color:white; outline:none;">
+          <input type="email" id="contactEmail" name="email" required placeholder="name@company.com" style="width:100%; background:#06080C; border:1px solid var(--border-medium); border-radius:var(--radius-sm); padding:12px; font-family:var(--font-body); color:white; outline:none;">
         </div>
         <div>
           <label style="display:block; font-family:var(--font-mono); font-size:11px; color:var(--text-dim); margin-bottom:6px;">PROJECT SCOPE / MESSAGE</label>
-          <textarea id="contactMessage" rows="4" required placeholder="Tell me about the role, project goals, and timeline..." style="width:100%; background:#06080C; border:1px solid var(--border-medium); border-radius:var(--radius-sm); padding:12px; font-family:var(--font-body); color:white; outline:none; resize:none;"></textarea>
+          <textarea id="contactMessage" name="message" rows="4" required placeholder="Tell me about the role, project goals, and timeline..." style="width:100%; background:#06080C; border:1px solid var(--border-medium); border-radius:var(--radius-sm); padding:12px; font-family:var(--font-body); color:white; outline:none; resize:none;"></textarea>
         </div>
-        <button type="submit" class="btn-primary" style="padding:14px; width:100%; font-size:13px;">
+        <button type="submit" class="btn-primary" id="contactSubmitBtn" style="padding:14px; width:100%; font-size:13px;">
           SEND MESSAGE →
         </button>
       </form>
