@@ -176,6 +176,7 @@ body {
    TELEMETRY TICKER TAPES (Running stream like SignalIQ)
    ========================================================================== */
 .telemetry-tape {
+  margin-top: calc(var(--header-height) + 16px);
   position: relative;
   width: 100%;
   overflow: hidden;
@@ -515,7 +516,6 @@ body {
   transition: all 0.25s var(--ease-spring);
   white-space: nowrap;
   flex-shrink: 0;
-}
   box-shadow: 0 0 12px rgba(0, 242, 157, 0.12);
 }
 
@@ -533,6 +533,225 @@ body {
 
 .nav-resume-btn:hover svg {
   transform: translateY(2px);
+}
+
+/* Mobile Menu Toggle Button (Desktop: Hidden) */
+.mobile-menu-toggle {
+  display: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-medium);
+  color: var(--text-primary);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3.5px;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.25s var(--ease-spring);
+  flex-shrink: 0;
+  outline: none;
+}
+
+.mobile-menu-toggle:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: var(--signal-emerald-border);
+}
+
+.hamburger-line {
+  width: 13px;
+  height: 1.5px;
+  background-color: var(--text-primary);
+  border-radius: 1px;
+  transition: all 0.25s var(--ease-spring);
+  transform-origin: center;
+}
+
+.mobile-menu-toggle.open .hamburger-line:nth-child(1) {
+  transform: translateY(5px) rotate(45deg);
+  background-color: var(--signal-emerald);
+}
+
+.mobile-menu-toggle.open .hamburger-line:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.mobile-menu-toggle.open .hamburger-line:nth-child(3) {
+  transform: translateY(-5px) rotate(-45deg);
+  background-color: var(--signal-emerald);
+}
+
+/* Mobile Navigation Drawer */
+.mobile-nav-drawer {
+  display: none;
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 12px;
+  right: 12px;
+  max-width: 480px;
+  margin: 0 auto;
+  background: rgba(10, 14, 22, 0.96);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--border-active);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85), 0 0 30px rgba(0, 242, 157, 0.12);
+  padding: 18px 16px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px) scale(0.98);
+  transition: all 0.25s var(--ease-spring);
+  pointer-events: none;
+  z-index: 1000;
+  box-sizing: border-box;
+}
+
+.mobile-nav-drawer.open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.mobile-nav-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: 12px;
+}
+
+.mobile-drawer-close {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-dim);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  font-size: 12px;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.mobile-drawer-close:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--text-primary);
+  border-color: var(--border-medium);
+}
+
+.mobile-nav-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 14px;
+}
+
+.mobile-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 12px;
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+
+.mobile-nav-link .nav-num {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--signal-emerald);
+  opacity: 0.8;
+}
+
+.mobile-nav-link:hover,
+.mobile-nav-link.active {
+  background: rgba(0, 242, 157, 0.08);
+  border-color: var(--signal-emerald-border);
+  color: var(--text-primary);
+  transform: translateX(4px);
+}
+
+.mobile-nav-footer {
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mobile-nav-settings-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 0 4px;
+}
+
+.mobile-theme-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mobile-setting-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-dim);
+  letter-spacing: 0.06em;
+}
+
+.mobile-sound-btn {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 6px;
+  width: auto;
+  height: 30px;
+  padding: 0 10px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--signal-emerald);
+  background: rgba(0, 242, 157, 0.08);
+  border: 1px solid var(--signal-emerald-border);
+}
+
+.mobile-nav-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mobile-contact-trigger-btn {
+  width: 100%;
+  justify-content: center;
+  padding: 12px;
+  font-size: 12px;
+  box-sizing: border-box;
+}
+
+.mobile-resume-link {
+  width: 100%;
+  justify-content: center;
+  padding: 11px;
+  font-size: 11px;
+  box-sizing: border-box;
+  text-align: center;
 }
 
 /* Hero Download Resume Button with Glow & PDF Badge */
@@ -761,9 +980,9 @@ section {
    HERO SECTION
    ========================================================================== */
 .hero-section {
-  padding-top: calc(var(--header-height) + 80px);
+  padding-top: 36px;
   padding-bottom: 80px;
-  min-height: 90vh;
+  min-height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1377,11 +1596,25 @@ section {
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
   padding: 8px 12px;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+  font-family: inherit;
+  width: 100%;
+  box-sizing: border-box;
+  transition: all 0.2s var(--ease-spring);
+}
+
+.micro-chip:hover {
+  background: rgba(0, 242, 157, 0.06);
+  border-color: var(--signal-emerald-border);
+  transform: translateY(-2px);
 }
 
 .micro-chip.highlight {
   background: var(--signal-emerald-dim);
-  border-color: var(--signal-emerald-border);
+  border-color: var(--signal-emerald);
+  box-shadow: 0 0 16px rgba(0, 242, 157, 0.18);
 }
 
 .micro-chip-tag {
@@ -1390,8 +1623,10 @@ section {
   letter-spacing: 0.08em;
   color: var(--text-dim);
   text-transform: uppercase;
+  transition: color 0.2s ease;
 }
 
+.micro-chip:hover .micro-chip-tag,
 .micro-chip.highlight .micro-chip-tag {
   color: var(--signal-emerald);
 }
@@ -1402,8 +1637,10 @@ section {
   font-weight: 600;
   color: var(--text-primary);
   margin-top: 2px;
+  transition: color 0.2s ease;
 }
 
+.micro-chip:hover .micro-chip-val,
 .micro-chip.highlight .micro-chip-val {
   color: var(--signal-emerald);
 }
@@ -1418,15 +1655,21 @@ section {
   flex-direction: column;
   justify-content: space-between;
   position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .widget-toolbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 8px;
   margin-bottom: 14px;
   padding-bottom: 10px;
   border-bottom: 1px solid var(--border-subtle);
+  flex-wrap: wrap;
 }
 
 .widget-name {
@@ -1434,6 +1677,19 @@ section {
   font-size: 10px;
   letter-spacing: 0.08em;
   color: var(--laser-cyan);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 65%;
+}
+
+.widget-token-status {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  color: var(--signal-emerald);
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
 }
 
 .widget-interactive-canvas {
@@ -2199,34 +2455,16 @@ section {
   }
 }
 
-/* Small Tablets & Large Phones (<= 860px) */
+/* Small Tablets & Mobile Devices (<= 860px) */
 @media (max-width: 860px) {
-  .nav-links {
-    display: none;
-  }
-  .status-pill {
-    display: none;
-  }
-  .glass-nav {
-    padding: 8px 14px;
-    gap: 12px;
-  }
-  .projects-grid {
-    grid-template-columns: 1fr;
-  }
-  .pillar-chips-row {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-/* Mobile Devices (<= 768px) */
-@media (max-width: 768px) {
   :root {
-    --header-height: 56px;
+    --header-height: 48px;
   }
 
-  body {
+  html, body {
     overflow-x: hidden;
+    max-width: 100vw;
+    width: 100%;
   }
 
   .container {
@@ -2234,25 +2472,52 @@ section {
   }
 
   section {
-    padding: 56px 0;
+    padding: 48px 0;
   }
 
-  /* Floating Top Navigation - Sleek & Non-Obtrusive */
+  .nav-links {
+    display: none;
+  }
+
+  .nav-actions .status-pill,
+  .nav-actions .nav-resume-btn,
+  .nav-actions #soundToggle,
+  .nav-actions #openContactBtn {
+    display: none !important; /* Keep mobile top bar clean, minimal & uncluttered */
+  }
+
+  .mobile-menu-toggle {
+    display: flex;
+  }
+
+  .mobile-nav-drawer {
+    display: block;
+  }
+
+  /* Floating Top Navigation - Clean, Minimal Floating Island */
   .nav-wrapper {
     top: 10px;
     padding: 0 12px;
+    width: 100%;
+    box-sizing: border-box;
+    pointer-events: none;
   }
 
   .glass-nav {
-    padding: 7px 12px;
+    pointer-events: auto;
+    padding: 6px 8px 6px 12px;
     gap: 10px;
+    width: 100%;
     max-width: 100%;
+    box-sizing: border-box;
     border-radius: var(--radius-pill);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(255, 255, 255, 0.06) inset;
   }
 
   .brand-badge {
     gap: 8px;
+    min-width: 0;
+    flex-shrink: 0;
   }
 
   .brand-symbol {
@@ -2263,54 +2528,54 @@ section {
   }
 
   .brand-symbol svg {
-    width: 14px;
-    height: 14px;
-  }
-
-  .brand-title {
-    font-size: 12px;
-    letter-spacing: 0.04em;
-    white-space: nowrap;
-  }
-
-  .brand-sub {
-    display: none; /* Hide secondary title on mobile to keep navbar ultra-compact */
-  }
-
-  .nav-actions {
-    gap: 6px;
-  }
-
-  .nav-actions .status-pill,
-  .nav-actions #openContactBtn {
-    display: none; /* Keep mobile bar clean and focused */
-  }
-
-  .nav-resume-btn {
-    padding: 6px 11px;
-    font-size: 10px;
-    gap: 4px;
-    letter-spacing: 0.06em;
-  }
-
-  .nav-resume-btn svg {
-    width: 12px;
-    height: 12px;
-  }
-
-  .sound-toggle-btn {
-    width: 32px;
-    height: 32px;
-    flex-shrink: 0;
-  }
-
-  .sound-toggle-btn svg {
     width: 13px;
     height: 13px;
   }
 
+  .brand-title {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+  }
+
+  .brand-design-tag,
+  .brand-accent-slash,
+  .brand-sub {
+    display: none !important; /* Shows clean 'SIVA KUMAR' */
+  }
+
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+
+  .theme-switcher-pill {
+    padding: 3px 6px;
+    gap: 4px;
+  }
+
+  .theme-dot {
+    width: 10px;
+    height: 10px;
+  }
+
+  .mobile-menu-toggle {
+    width: 32px;
+    height: 32px;
+  }
+
+  .mobile-nav-drawer {
+    left: 10px;
+    right: 10px;
+    top: calc(100% + 8px);
+  }
+
   /* Telemetry Ticker */
   .telemetry-tape {
+    margin-top: calc(var(--header-height) + 18px);
     padding: 8px 0;
     font-size: 10px;
   }
@@ -2322,10 +2587,90 @@ section {
 
   /* Hero Section */
   .hero-section {
-    padding-top: calc(var(--header-height) + 24px);
+    padding-top: 24px;
     padding-bottom: 40px;
     min-height: auto;
   }
+
+  .hero-badge-row {
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .hero-pill-intro {
+    font-size: 13px;
+    padding: 4px 10px;
+  }
+
+  .section-tag {
+    font-size: 10px;
+    padding: 4px 10px;
+    letter-spacing: 0.08em;
+  }
+
+  .hero-title-main {
+    font-size: clamp(30px, 8.5vw, 44px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+  }
+
+  .hero-desc {
+    font-size: 15px;
+    line-height: 1.55;
+    margin-bottom: 24px;
+  }
+
+  .hero-cta-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+    margin-bottom: 36px;
+  }
+
+  .hero-cta-group > * {
+    width: 100%;
+    justify-content: center;
+    box-sizing: border-box;
+    text-align: center;
+    padding: 12px 18px;
+    font-size: 12.5px;
+  }
+
+  .hero-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 32px;
+  }
+
+  .stat-card {
+    padding: 12px 14px;
+  }
+
+  .stat-label {
+    font-size: 9px;
+  }
+
+  .stat-val {
+    font-size: 20px;
+  }
+
+  /* Signal Inspector Widget */
+  .signal-inspector-frame {
+    border-radius: var(--radius-md);
+    margin-top: 8px;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .pillar-chips-row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
 
   .hero-badge-row {
     flex-wrap: wrap;
@@ -2572,18 +2917,22 @@ section {
   /* Bento Pillars */
   .bento-pillars-grid {
     margin-top: 24px;
-    gap: 16px;
+    gap: 20px;
   }
 
   .bento-pillar-card {
-    padding: 20px 14px;
-    gap: 18px;
+    padding: 22px 16px;
+    gap: 20px;
     border-radius: var(--radius-md);
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
   }
 
   .pillar-header-row {
     gap: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
   }
 
   .pillar-num {
@@ -2592,35 +2941,65 @@ section {
 
   .pillar-title {
     font-size: 18px;
-    margin-bottom: 10px;
+    line-height: 1.25;
+    word-break: normal;
+    overflow-wrap: break-word;
+    margin-bottom: 12px;
   }
 
   .pillar-desc {
-    font-size: 13px;
-    line-height: 1.55;
-    margin-bottom: 16px;
+    font-size: 13.5px;
+    line-height: 1.6;
+    margin-bottom: 18px;
   }
 
   .pillar-chips-row {
+    display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 8px;
+    width: 100%;
   }
 
   .micro-chip {
-    padding: 6px 10px;
+    padding: 8px 10px;
+    min-height: 52px;
   }
 
   .micro-chip-tag {
-    font-size: 8px;
+    font-size: 8.5px;
   }
 
   .micro-chip-val {
-    font-size: 10px;
+    font-size: 10.5px;
   }
 
   .pillar-widget-box {
-    padding: 12px;
+    padding: 14px 12px;
     border-radius: var(--radius-sm);
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .widget-toolbar {
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    gap: 6px;
+  }
+
+  .widget-name {
+    font-size: 9.5px;
+    max-width: 60%;
+  }
+
+  .widget-token-status {
+    font-size: 9px;
+  }
+
+  .code-pre {
+    font-size: 10.5px;
+    line-height: 1.45;
   }
 
   .widget-interactive-canvas {
@@ -2933,8 +3312,37 @@ section {
   }
 }
 
-/* Extra Small Phones (<= 380px) */
-@media (max-width: 380px) {
+/* Extra Small Phones (<= 440px) */
+@media (max-width: 440px) {
+  .nav-wrapper {
+    padding: 0 8px;
+    top: 8px;
+  }
+
+  .glass-nav {
+    padding: 5px 8px 5px 10px;
+    gap: 8px;
+  }
+
+  .brand-title {
+    font-size: 11.5px;
+  }
+
+  .theme-switcher-pill {
+    padding: 2.5px 5px;
+    gap: 3.5px;
+  }
+
+  .theme-dot {
+    width: 9.5px;
+    height: 9.5px;
+  }
+
+  .mobile-menu-toggle {
+    width: 30px;
+    height: 30px;
+  }
+
   .hero-stats-grid {
     grid-template-columns: 1fr;
   }
@@ -2942,14 +3350,37 @@ section {
   .pillar-chips-row {
     grid-template-columns: 1fr;
   }
+}
 
-  .brand-title {
-    font-size: 11px;
+/* Micro Devices (<= 340px) */
+@media (max-width: 340px) {
+  .nav-wrapper {
+    padding: 0 5px;
+    top: 6px;
   }
 
-  .nav-resume-btn {
-    padding: 5px 8px;
-    font-size: 9.5px;
+  .glass-nav {
+    padding: 4px 6px 4px 8px;
+    gap: 6px;
+  }
+
+  .brand-symbol {
+    width: 22px;
+    height: 22px;
+  }
+
+  .brand-title {
+    font-size: 10.5px;
+  }
+
+  .theme-dot {
+    width: 8.5px;
+    height: 8.5px;
+  }
+
+  .mobile-menu-toggle {
+    width: 28px;
+    height: 28px;
   }
 }
 

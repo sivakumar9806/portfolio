@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initExperienceSection();
   initFaqAccordion();
   initModalsAndForms();
+  initMobileNavigation();
   initScrollSpy();
   init3DTiltEffects();
 });
@@ -91,14 +92,28 @@ function initAudioSynthesizer() {
 
   window.playSignalSound = playClick;
 
-  if (soundBtn) {
-    soundBtn.addEventListener('click', () => {
-      soundEnabled = !soundEnabled;
-      soundBtn.style.color = soundEnabled ? 'var(--signal-emerald)' : 'var(--text-dim)';
-      showToast(soundEnabled ? "Tactile Audio: Enabled" : "Tactile Audio: Muted");
-      if (soundEnabled) playClick(1200, 0.05, 'triangle');
+  const soundBtn = document.getElementById('soundToggle');
+  const mobileSoundBtn = document.getElementById('mobileSoundToggle');
+
+  function updateSoundButtons() {
+    [soundBtn, mobileSoundBtn].forEach(btn => {
+      if (!btn) return;
+      btn.style.color = soundEnabled ? 'var(--signal-emerald)' : 'var(--text-dim)';
+      const span = btn.querySelector('span');
+      if (span) span.textContent = soundEnabled ? 'AUDIO ON' : 'AUDIO OFF';
     });
   }
+
+  [soundBtn, mobileSoundBtn].forEach(btn => {
+    if (btn) {
+      btn.addEventListener('click', () => {
+        soundEnabled = !soundEnabled;
+        updateSoundButtons();
+        showToast(soundEnabled ? "Tactile Audio: Enabled" : "Tactile Audio: Muted");
+        if (soundEnabled) playClick(1200, 0.05, 'triangle');
+      });
+    }
+  });
 }
 
 /* ==========================================================================
@@ -323,11 +338,18 @@ function initBentoPillars() {
   if (!container) return;
 
   container.innerHTML = PORTFOLIO_DATA.bentoPillars.map(pillar => {
+    const defaultChip = pillar.chips.find(c => c.highlight) || pillar.chips[0];
+    
     const chipsHtml = pillar.chips.map(chip => `
-      <div class="micro-chip ${chip.highlight ? 'highlight' : ''}">
-        <div class="micro-chip-tag">${chip.label}</div>
-        <div class="micro-chip-val">${chip.val}</div>
-      </div>
+      <button class="micro-chip ${chip.highlight ? 'highlight' : ''}" 
+              data-pillar="${pillar.num}" 
+              data-chip-id="${chip.id}"
+              type="button"
+              title="Inspect ${escapeHtml(chip.label)}: ${escapeHtml(chip.val)}"
+              aria-label="${escapeHtml(chip.label)}: ${escapeHtml(chip.val)}">
+        <div class="micro-chip-tag">${escapeHtml(chip.label)}</div>
+        <div class="micro-chip-val">${escapeHtml(chip.val)}</div>
+      </button>
     `).join('');
 
     return `
@@ -339,23 +361,67 @@ function initBentoPillars() {
           </div>
           <h3 class="pillar-title">${pillar.title}</h3>
           <p class="pillar-desc">${pillar.desc}</p>
-          <div class="pillar-chips-row">
+          <div class="pillar-chips-row" role="tablist" aria-label="${pillar.tag} specifications">
             ${chipsHtml}
           </div>
         </div>
 
         <div class="pillar-widget-box">
           <div class="widget-toolbar">
-            <span class="widget-name">// SPEC_${pillar.tag.replace(/\s+/g, '_')}</span>
-            <span style="font-family:var(--font-mono); font-size:10px; color:var(--signal-emerald);">FIGMA_TOKEN_ACTIVE</span>
+            <span class="widget-name" id="widgetName_${pillar.num}">// SPEC_${defaultChip.specTag || pillar.tag.replace(/\s+/g, '_')}</span>
+            <span class="widget-token-status">
+              <span class="beacon-dot" style="width:5px; height:5px; display:inline-block; margin-right:4px;"></span>
+              <span>LIVE_SPEC_ACTIVE</span>
+            </span>
           </div>
           <div class="widget-interactive-canvas">
-            <pre class="code-pre" style="font-size:11px;"><code>${escapeHtml(pillar.code)}</code></pre>
+            <pre class="code-pre" id="pillarCode_${pillar.num}"><code>${escapeHtml(defaultChip.code || pillar.code)}</code></pre>
           </div>
         </div>
       </div>
     `;
   }).join('');
+
+  // Attach interactive tab switching to every chip
+  document.querySelectorAll('.bento-pillar-card .micro-chip').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const pillarNum = btn.getAttribute('data-pillar');
+      const chipId = btn.getAttribute('data-chip-id');
+      const pillar = PORTFOLIO_DATA.bentoPillars.find(p => p.num === pillarNum);
+      if (!pillar) return;
+
+      const chip = pillar.chips.find(c => c.id === chipId);
+      if (!chip) return;
+
+      // Update active highlight class on buttons inside this pillar card
+      const card = document.getElementById(`pillarCard_${pillarNum}`);
+      if (card) {
+        card.querySelectorAll('.micro-chip').forEach(c => c.classList.remove('highlight'));
+        btn.classList.add('highlight');
+      }
+
+      // Smoothly update code pre and widget name
+      const codeEl = document.getElementById(`pillarCode_${pillarNum}`);
+      const nameEl = document.getElementById(`widgetName_${pillarNum}`);
+
+      if (codeEl) {
+        codeEl.style.opacity = '0.25';
+        codeEl.style.transform = 'translateY(3px)';
+        codeEl.style.transition = 'all 0.15s ease';
+        setTimeout(() => {
+          codeEl.innerHTML = `<code>${escapeHtml(chip.code)}</code>`;
+          codeEl.style.opacity = '1';
+          codeEl.style.transform = 'translateY(0)';
+        }, 120);
+      }
+
+      if (nameEl) {
+        nameEl.textContent = `// SPEC_${chip.specTag}`;
+      }
+
+      window.playSignalSound?.(1150, 0.04, 'triangle');
+    });
+  });
 }
 
 /* ==========================================================================
@@ -845,7 +911,7 @@ function triggerResumeDownload() {
    ========================================================================== */
 function initScrollSpy() {
   const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.nav-links a');
+  const navLinks = document.querySelectorAll('.nav-links a, .mobile-nav-link');
 
   window.addEventListener('scroll', () => {
     let current = '';
@@ -863,6 +929,88 @@ function initScrollSpy() {
       }
     });
   }, { passive: true });
+}
+
+/* ==========================================================================
+   14. MOBILE NAVIGATION CONTROLLER
+   ========================================================================== */
+function initMobileNavigation() {
+  const toggleBtn = document.getElementById('mobileMenuToggle');
+  const drawer = document.getElementById('mobileNavDrawer');
+  const closeBtn = document.getElementById('closeMobileNavBtn');
+  const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+  const mobileContactBtn = document.getElementById('mobileContactBtn');
+  const contactOverlay = document.getElementById('contactModalOverlay');
+
+  if (!toggleBtn || !drawer) return;
+
+  function openDrawer() {
+    drawer.classList.add('open');
+    toggleBtn.classList.add('open');
+    toggleBtn.setAttribute('aria-expanded', 'true');
+    drawer.setAttribute('aria-hidden', 'false');
+    window.playSignalSound?.(1100, 0.04);
+  }
+
+  function closeDrawer() {
+    drawer.classList.remove('open');
+    toggleBtn.classList.remove('open');
+    toggleBtn.setAttribute('aria-expanded', 'false');
+    drawer.setAttribute('aria-hidden', 'true');
+  }
+
+  function toggleDrawer() {
+    if (drawer.classList.contains('open')) {
+      closeDrawer();
+      window.playSignalSound?.(850, 0.03);
+    } else {
+      openDrawer();
+    }
+  }
+
+  toggleBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleDrawer();
+  });
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      closeDrawer();
+      window.playSignalSound?.(850, 0.03);
+    });
+  }
+
+  // Close when clicking on any mobile nav link
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      closeDrawer();
+      window.playSignalSound?.(1000, 0.03);
+    });
+  });
+
+  // Mobile Contact Button trigger
+  if (mobileContactBtn && contactOverlay) {
+    mobileContactBtn.addEventListener('click', () => {
+      closeDrawer();
+      window.playSignalSound?.(950, 0.04);
+      contactOverlay.classList.add('open');
+    });
+  }
+
+  // Close drawer when clicking outside
+  document.addEventListener('click', (e) => {
+    if (drawer.classList.contains('open') && !drawer.contains(e.target) && !toggleBtn.contains(e.target)) {
+      closeDrawer();
+    }
+  });
+
+  // Close drawer on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && drawer.classList.contains('open')) {
+      closeDrawer();
+    }
+  });
 }
 
 /* ==========================================================================
@@ -908,7 +1056,7 @@ function escapeHtml(str) {
 }
 
 /* ==========================================================================
-   14. INTERACTIVE 3D TILT EFFECT & MAGNETIC CARD PHYSICS
+   15. INTERACTIVE 3D TILT EFFECT & MAGNETIC CARD PHYSICS
    ========================================================================== */
 function init3DTiltEffects() {
   const cards = document.querySelectorAll('.project-card, .bento-pillar-card, .stat-card');
