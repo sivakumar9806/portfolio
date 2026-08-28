@@ -130,62 +130,19 @@ function render_accessible_cta_button($text, $url, $aria_label) {
       title: "DIGITAL EXPERIENCES DESIGNED FOR EVERY HUMAN.",
       desc: "Good design is universally accessible. Inspired by real-world bank revamps like Bank of India, I conduct deep WCAG compliance audits, contrast checks, screen reader label optimization, and thumb-friendly touch target architectures.",
       chips: [
-        { 
-          id: "p1-l1",
-          label: "L1", 
-          val: "WCAG 2.1 COMPLIANCE",
-          specTag: "WCAG_2.1_AAA_SPEC",
-          code: `// WCAG 2.1 AA/AAA Compliance Verification Spec
-const WCAGComplianceRule = {
-  standard: 'WCAG 2.1 Level AAA',
-  touchTargets: '>= 48x48 dp across all primary touch CTAs',
-  colorContrast: 'Ratio >= 4.5:1 for body text, 7:1 for headers',
-  screenReader: 'Explicit aria-labels & semantic heading hierarchy',
-  focusOrder: 'Logical keyboard tab sequence & TalkBack support'
-};`
-        },
-        { 
-          id: "p1-l2",
-          label: "L2", 
-          val: "HEURISTIC EVALUATION",
-          specTag: "HEURISTIC_EVAL_MAP",
-          code: `// Nielsen Norman 10 Usability Heuristics Audit
-const HeuristicEvaluation = {
-  visibilityOfStatus: 'Real-time telemetry indicators & live feedback',
-  matchRealWorld: 'Familiar banking language & thumb-friendly IA',
-  userControl: 'One-tap undo, clear cancellation & back states',
-  errorPrevention: 'Smart form masking & destructive action confirmation'
-};`
-        },
-        { 
-          id: "p1-testing",
-          label: "TESTING", 
-          val: "MODERATED USABILITY",
-          specTag: "USABILITY_TEST_METRICS",
-          code: `// Moderated Usability Testing & User Benchmark
-const UsabilityTesting = {
-  sampleSize: '12 Target Users across 3 demographic segments',
-  taskPassRate: '96% on primary fund transfer flow',
-  avgTimeToComplete: 'Reduced from 3m 40s to 1m 12s',
-  systemUsabilityScale: 'SUS Score: 88.5 (Industry Benchmark: 68.0)'
-};`
-        },
-        { 
-          id: "p1-contrast",
-          label: "CONTRAST", 
-          val: "AAA 7:1 RATIO", 
-          highlight: true,
-          specTag: "CONTRAST_RATIO_ENGINE",
-          code: `// Color Contrast & Token Verification Engine
-const ContrastEngine = {
-  primaryTextOnDark: '#FFFFFF on #05070A (Ratio: 18.2:1 - AAA Pass)',
-  accentEmeraldOnDark: '#00F29D on #05070A (Ratio: 12.4:1 - AAA Pass)',
-  dimTextOnCard: '#94A3B8 on #131822 (Ratio: 7.3:1 - AAA Pass)',
-  ambientContrastAudit: 'VERIFIED_100%_PASS'
-};`
-        }
+        { label: "L1", val: "WCAG 2.1 COMPLIANCE" },
+        { label: "L2", val: "HEURISTIC EVALUATION" },
+        { label: "TESTING", val: "MODERATED USABILITY" },
+        { label: "CONTRAST", val: "AAA 7:1 RATIO", highlight: true }
       ],
-      interactiveWidget: "accessibility-inspector"
+      interactiveWidget: "accessibility-inspector",
+      code: `// Accessibility Audit Spec - Bank of India App Revamp
+const AccessibilityAudit = {
+  touchTargets: '>= 48x48 dp across all primary CTAs',
+  colorContrast: 'Text to background ratio >= 4.5:1 for body, 7:1 for headers',
+  screenReader: 'Explicit aria-labels on icon-only actions',
+  navigation: 'Updated bottom-bar IA with one-tap fund transfer access'
+};`
     },
     {
       num: "02",
@@ -193,61 +150,19 @@ const ContrastEngine = {
       title: "MICRO-INTERACTIONS THAT FEEL TACTILE & ALIVE.",
       desc: "Static mockups cannot communicate product feel. For brands like Lay's, I build end-to-end interactive prototypes with animated transitions, dynamic cart state management, and delight-driven micro-interactions.",
       chips: [
-        { 
-          id: "p2-l1",
-          label: "L1", 
-          val: "FIGMA COMPONENTS",
-          specTag: "FIGMA_COMPONENT_SPEC",
-          code: `// Figma Component Variant Protocol
-const ComponentArchitecture = {
-  nestedVariants: '48 Reusable Interactive States',
-  stateCoverage: ['Default', 'Hover', 'Active', 'Disabled', 'Loading'],
-  autoLayoutProps: { fillContainer: true, gap: '12px', padding: '16px' },
-  tokenLinkage: 'Signal Architecture Design System Tokens'
-};`
-        },
-        { 
-          id: "p2-l2",
-          label: "L2", 
-          val: "MOTION & PHYSICS",
-          specTag: "SPRING_MOTION_PHYSICS",
-          code: `// Tactile Motion & Spring Physics Parameters
-const MotionPhysics = {
-  hoverSpring: { stiffness: 400, damping: 28, mass: 1 },
-  pageTransition: '350ms cubic-bezier(0.16, 1, 0.3, 1)',
-  cartDrawerSlide: '280ms cubic-bezier(0.25, 1, 0.5, 1)',
-  hapticFeedback: 'Web Audio synthesizer click on toggle'
-};`
-        },
-        { 
-          id: "p2-flow",
-          label: "USER FLOW", 
-          val: "DISCOVERY TO CHECKOUT",
-          specTag: "ECOM_CONVERSION_FLOW",
-          code: `// E-Commerce Conversion Flow Architecture
-const FlowProtocol = {
-  step1: 'Visual Flavor Explorer -> 60fps 3D card tilt',
-  step2: 'Instant Add to Cart -> Badge haptic bounce animation',
-  step3: 'Slide-over Cart Drawer -> Zero layout shift transition',
-  step4: 'Streamlined One-Tap Checkout -> 3 steps reduced from 6'
-};`
-        },
-        { 
-          id: "p2-fidelity",
-          label: "FIDELITY", 
-          val: "PIXEL-ACCURATE", 
-          highlight: true,
-          specTag: "FIGMA_FIDELITY_TOKEN",
-          code: `// Lay's Brand Prototype Interaction Parameters
+        { label: "L1", val: "FIGMA INTERACTIVE COMPONENTS" },
+        { label: "L2", val: "MICRO-INTERACTIONS & MOTION" },
+        { label: "USER FLOW", val: "DISCOVERY TO CHECKOUT" },
+        { label: "FIDELITY", val: "PIXEL-ACCURATE", highlight: true }
+      ],
+      interactiveWidget: "motion-specs",
+      code: `// Lay's Brand Prototype Interaction Parameters
 const LayMotionProtocol = {
   hoverSpring: { stiffness: 400, damping: 28 },
   productFlipTransition: '350ms cubic-bezier(0.34, 1.56, 0.64, 1)',
   cartDrawerSlide: '280ms ease-out',
   checkoutHaptics: 'Visual ripple validation on confirm'
 };`
-        }
-      ],
-      interactiveWidget: "motion-specs"
     },
     {
       num: "03",
@@ -255,61 +170,19 @@ const LayMotionProtocol = {
       title: "SCALING CONCEPTS 4X FASTER WITH AI DESIGN OPS.",
       desc: "Harnessing the latest AI design tools — from Figma AI & FigJam AI to v0 by Vercel, Lovable, Claude, and Galileo AI — to synthesize research notes into user personas, generate layout variants, and accelerate delivery.",
       chips: [
-        { 
-          id: "p3-l1",
-          label: "L1", 
-          val: "FIGMA AI & FIGJAM",
-          specTag: "AI_PERSONA_SYNTHESIS",
-          code: `// FigJam AI Synthesis & Persona Generation
-const FigJamAISpec = {
-  prompt: 'Synthesize 15 user interview transcripts into 3 personas',
-  outputs: ['Primary: Mobile Power User', 'Secondary: Accessibility Focused'],
-  painPointsIdentified: 8,
-  clusteringSpeed: '10x faster synthesis velocity'
-};`
-        },
-        { 
-          id: "p3-l2",
-          label: "L2", 
-          val: "v0 / LOVABLE / AI",
-          specTag: "GENERATIVE_UI_PIPELINE",
-          code: `// Generative UI Exploration Pipeline
-const RapidGenerativeUI = {
-  toolset: ['v0 by Vercel', 'Lovable.dev', 'Galileo AI', 'Claude 3.7'],
-  explorationVariants: '12 interactive UI iterations in 2 hours',
-  codeHandoff: 'Clean semantic HTML / CSS / Tailwind tokens',
-  designRefinement: 'Figma Auto-Layout component polish'
-};`
-        },
-        { 
-          id: "p3-synthesis",
-          label: "SYNTHESIS", 
-          val: "RAPID MAPPING",
-          specTag: "AI_OPS_WORKFLOW",
-          code: `// Desk Research & Qualitative Synthesis Pipeline
+        { label: "L1", val: "FIGMA AI & FIGJAM AI" },
+        { label: "L2", val: "v0 / LOVABLE / GALILEO" },
+        { label: "SYNTHESIS", val: "RAPID PERSONA MAPPING" },
+        { label: "VELOCITY", val: "4X CONCEPT SPEED", highlight: true }
+      ],
+      interactiveWidget: "ai-tool-grid",
+      code: `// AI-Assisted Design Ops Workflow
 const DesignOpsWorkflow = [
   "1. Desk Research & Transcript Synthesis -> Claude / Gemini",
   "2. Persona & User Journey Mapping -> FigJam AI",
   "3. Rapid UI Layout Exploration -> v0 by Vercel / Lovable",
   "4. High-Fidelity Design System Finalization -> Figma Components"
 ];`
-        },
-        { 
-          id: "p3-velocity",
-          label: "VELOCITY", 
-          val: "4X CONCEPT SPEED", 
-          highlight: true,
-          specTag: "VELOCITY_METRICS_LIVE",
-          code: `// Velocity & Output Efficiency Metrics
-const VelocityMetrics = {
-  conceptToPrototype: '4x faster exploration cycle',
-  designSystemConsistency: '90% component token reuse',
-  timeToUserTesting: '2 days (previously 2 weeks)',
-  stakeholderAlignment: 'Real-time interactive code preview'
-};`
-        }
-      ],
-      interactiveWidget: "ai-tool-grid"
     }
   ],
 
