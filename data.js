@@ -311,7 +311,7 @@ const DesignOpsWorkflow = [
 
   experience: [
     {
-      period: "NOV 2025 — PRESENT",
+      period: "JULY 2025 — JULY 2026",
       role: "Product Designer & WordPress Developer",
       company: "Vehonitor Private Limited",
       location: "Chennai, India",
