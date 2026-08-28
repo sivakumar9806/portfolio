@@ -177,12 +177,7 @@ function initHeroSection() {
     });
   }
 
-  const copyEmailBtn = document.getElementById('heroCopyEmailBtn');
-  if (copyEmailBtn) {
-    copyEmailBtn.addEventListener('click', () => {
-      copyToClipboard(PORTFOLIO_DATA.profile.email);
-    });
-  }
+
 }
 
 /* ==========================================================================
@@ -809,13 +804,7 @@ function initModalsAndForms() {
     });
   }
 
-  // Copy Email Buttons
-  const ctaCopyEmail = document.getElementById('ctaCopyEmailBtn');
-  if (ctaCopyEmail) {
-    ctaCopyEmail.addEventListener('click', () => {
-      copyToClipboard(PORTFOLIO_DATA.profile.email);
-    });
-  }
+
 
   // Resume Download Buttons Tactile Sound & Toast Feedback
   document.querySelectorAll('a[download]').forEach(link => {
